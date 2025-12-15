@@ -1,0 +1,18 @@
+CRIAR UM PROJETO
+
+composer create-project laravel/laravel nome_projeto
+
+RODAR SERVIDOR
+
+php artisan serve
+
+caso dê erro no sqlite, rodar este comando:
+
+X.X == Versão do php utilizada. verifique-a rodando php -v
+
+sudo apt install phpX.X-sqlite3
+
+
+CRIANDO CONTROLLER
+
+php artisan make:controller NomeController
