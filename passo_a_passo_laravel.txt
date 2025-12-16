@@ -16,3 +16,45 @@ sudo apt install phpX.X-sqlite3
 CRIANDO CONTROLLER
 
 php artisan make:controller NomeController
+
+CRIANDO VIEW
+
+php artisan make:view main NomeView
+
+se eu quiser colocar dentro de um diretório
+
+php artisan make:view main dir/NomeView
+
+
+CRIANDO MIGRATES
+php artisan make:migration create_users_table
+
+// Exclusão lógica: marca o registro como apagado usando a coluna deleted_at,
+// sem remover o registro fisicamente do banco de dados
+$table->softDeletes();
+
+No model:
+
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class User extends Model
+{
+    use SoftDeletes;
+}
+
+
+Sem isso, o Laravel não aplica o soft delete automaticamente.
+
+executar as migrations
+
+php artisan migrate
+
+executar o rollback
+php artisan migrate:rollback
+
+
+criando seeder
+php artisan make:seeder UsersTableSeeder
+
+executa seeder
+php artisan db:seed NomedaSeed
