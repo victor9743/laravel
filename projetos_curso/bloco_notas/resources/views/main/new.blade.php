@@ -1,18 +1,18 @@
 @extends("layouts.main_layout")
 
     @section("content")
-        <form method="POST" action="/login" novalidate>
+        <form method="POST" action="/save" novalidate>
             @csrf
             <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="email"
-                name="username" 
-                class="form-control" id="username" 
-                aria-describedby="emailHelp"
-                value="{{ old('username') }}"
+                <label for="title" class="form-label">Title</label>
+                <input type="text"
+                name="title" 
+                class="form-control" id="title" 
+                aria-describedby="etitleHelp"
+                value="{{ old('title') }}"
                 required
                 >
-                @error('username')
+                @error('title')
                     <div class="text-danger">
                         {{ $message }}
                     </div>
@@ -20,21 +20,15 @@
             </div>
 
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" 
-                name="password" 
-                class="form-control" 
-                id="exampleInputPassword1"
-                value="{{ old('password') }}"
-                required
-                >
-                @error('password')
+                <label for="text" class="form-label">Text</label>
+                <textarea name="text" id="" cols="30" rows="10" required class="form-control">{{ old('text') }}</textarea>
+                @error('text')
                     <div class="text-danger">
                         {{ $message }}
                     </div>
                 @enderror
             </div>
-
+            <a href="{{ route('home')}}">Back</a>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
