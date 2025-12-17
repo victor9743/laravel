@@ -58,3 +58,48 @@ php artisan make:seeder UsersTableSeeder
 
 executa seeder
 php artisan db:seed NomedaSeed
+
+CRIANDO MODEL 
+
+php artisan make:model NomeDoModel
+
+
+TRANSFORMA OS DADOS VINDO DO ELOQUENT MODEL EM ARRAY
+
+$users = User::all()->toArray();
+
+REDIRECIONA PARA A PÁGINA ANTERIOR: ->back()
+REDIRECIONA REPASSANDO OS DADOS QUE FORAM ENVIADOS: ->withInput()
+
+return redirect()->back()->withInput()->with('loginError', 'Username ou Password Inválidos');
+
+
+CRIANDO MIDDLEWARE
+php artisan make:middleware CheckIsLogged
+
+
+USANDO SOFT DELETE
+
+EXEMPLO NO MODEL:
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Note extends Model
+{
+    use SoftDeletes;
+    
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+}
+
+VERIFICAR A VERSÃO DO LARAVEL INSTALADO
+php artisan --version
+
+
+CRIA TODO O CRUD NA web.php
+Route::resource('notes', NoteController::class);
