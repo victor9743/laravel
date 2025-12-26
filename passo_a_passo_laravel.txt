@@ -103,3 +103,50 @@ php artisan --version
 
 CRIA TODO O CRUD NA web.php
 Route::resource('notes', NoteController::class);
+
+
+
+CRIANDO UM PREFIXO PARA VÁRIAS ROTAS
+Route::prefix('admin')->group(function(){
+    Route::get('/home', [NomeController::class, 'index']);
+    Route::get('/new', [NomeController::class, 'new']);
+    Route::get('/show/{id}', [NomeController::class, 'show']);
+    Route::get('/delete', [NomeController::class, 'delete']);
+});
+
+
+PÁGINA NÃO ENCONTRADA
+Route::fallback(function(){
+    echo 'página não encontrada';
+});
+
+CRIANDO CONTROLLER COM ROTAS CRUD PREDEFINIDAS
+php artisan make:controller --resource
+
+
+CRIANDO UM CONJUNTO DE ROTAS PARA O CONTROLLER COM RESOURCE
+Route::resource('users', NomeController::class);
+
+CRIANDO UM RESOURCES PARA VÁRIOS CONTROLLERS
+
+Route::resources([
+    'clients' => ClientController::class,
+    'products' => ProductsController::class
+])
+
+
+PEGAR O INDEX DENTRO DO FOREACH
+
+{{ loop->index }}
+
+PEGANDO O PRIMEIRO E O ULTIMO DO FOREACH
+{{ loop->first }}
+{{ loop->last }}
+
+LISTANDO ROTAS VIA TERMINAL
+php artisan route:list
+
+PARAMETRO QUE MOSTRA ALGO APENAS EM AMBIENTE DE PRODUÇÃO
+@production
+    <h1>EStou em Ambiente de produção</h1>
+@endproduction
