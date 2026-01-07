@@ -150,3 +150,30 @@ PARAMETRO QUE MOSTRA ALGO APENAS EM AMBIENTE DE PRODUÇÃO
 @production
     <h1>EStou em Ambiente de produção</h1>
 @endproduction
+
+TRABALHANDO COM AUTENTICAÇÃO COM BREEZE
+
+1- INSTALAÇÃO
+composer require laravel/breeze --dev
+php artisan breeze:install
+
+SE HOUVER ERRO, REALIZAR ESTES PASSOS
+Apague tudo que o Composer gera:
+
+rm -rf vendor composer.lock
+
+
+Limpe o cache do Composer:
+
+composer clear-cache
+
+
+Reinstale as dependências:
+
+composer install
+
+
+Depois disso, instale o Breeze novamente:
+
+composer require laravel/breeze --dev
+php artisan breeze:install
