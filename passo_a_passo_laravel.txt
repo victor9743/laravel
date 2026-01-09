@@ -177,3 +177,104 @@ Depois disso, instale o Breeze novamente:
 
 composer require laravel/breeze --dev
 php artisan breeze:install
+
+EXECUTANDO UMA DETERMINADA SEEDER
+php artisan db:seed --class=DatabaseSeeder
+
+TRABALHANDO COM ENVIO DE EMAILS
+- descomentar este trecho de código no model users
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+- depois adicionar a mesma class do model o implements
+class User extends Authenticatable implements MustVerifyEmail
+
+- verificar os log do email recebido como teste
+storage/logs/laravel.log
+
+para isso ocorrer não pode alterar estes parametros no .env, a não ser que seja necessário trabalhar com uma messageria
+MAIL_MAILER=log
+MAIL_SCHEME=null
+MAIL_HOST=127.0.0.1
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+TRABALHANDO COM LIVEWARE
+
+INSTALAÇÃO
+composer require livewire/livewire
+
+CRIAÇÃO DE UM LAYOUT
+php artisan livewire:layout
+
+CRIANDO UM COMPONENTE
+php artisan livewire:make nome_componente
+
+IMPORTANDO UM COMPONENTE DENTRO DE UMA PÁGINA
+@livewire('nome_do_componente')
+
+outra forma
+
+<livewire:counter />
+
+
+CRIANDO AÇÕES NO LIVEWIRE PARA SEREM CHAMADOS NA VIEW
+public function increment()
+{
+    $this->count++;
+}
+
+<button wire:click="increment">Increment</button>
+
+CRIANDO ARQUIVO DE CONFIGURAÇÕES DO LIVEWIRE
+php artisan livewire:publish --config
+
+CRIANDO APENAS A VIEW DO COMPONENTE
+php artisan make:component layouts/MainLayout --view
+
+FAZ COM QUE OS COMPONENTES SEJAM APRESENTADOS DENTRO DE UM LAYOUT
+ {{ $slot }}
+
+CRIAR UM COMPONENTE SEM PRECISAR DE UMA VIEW
+php artisan livewire:make InlineComponent --inline
+
+COMO FICA: 
+<?php
+
+namespace App\Livewire;
+
+use Livewire\Component;
+
+class InlineComponent extends Component
+{
+    public function render()
+    {
+        return <<<'HTML'
+        <div>
+            {{-- Nothing in the world is as soft and yielding as water. --}}
+        </div>
+        HTML;
+    }
+}
+
+CRIANDO UM STUBS
+php artisan livewire:stubs
+
+ação de enviar formulário
+wire:submit="submit_form"
+
+EXEMPLO
+<form wire:submit="submit_form">
+    <input wire:model="name" type="text" id="name" placeholder="Name">
+    <input wire:model="email" type="email" id="email" placeholder="Email">
+    <button>Submit</button>
+</form>
+
+DEFININDO UM LAYOUT PARA UM COMPONENT
+
+public function render()
+{
+    return view('livewire.client-component')->layout('components.layouts.new-layout');
+}
