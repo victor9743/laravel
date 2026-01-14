@@ -278,3 +278,5 @@ public function render()
 {
     return view('livewire.client-component')->layout('components.layouts.new-layout');
 }
+
+TRABALHANDO COM SWEETALERT PARA MOSTRAR NOTIFICAÇÕES
