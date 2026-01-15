@@ -280,3 +280,9 @@ public function render()
 }
 
 TRABALHANDO COM SWEETALERT PARA MOSTRAR NOTIFICAÇÕES
+
+
+INSTALAÇÃO DO FORTIFY
+composer require laravel/fortify
+
+php artisan fortify:install
