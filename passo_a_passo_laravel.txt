@@ -286,3 +286,44 @@ INSTALAÇÃO DO FORTIFY
 composer require laravel/fortify
 
 php artisan fortify:install
+
+
+MAILHOG para log de email
+wget https://github.com/mailhog/MailHog/releases/latest/download/MailHog_linux_amd64
+
+chmod +x MailHog_linux_amd64
+
+sudo mv MailHog_linux_amd64 /usr/local/bin/mailhog
+
+mailhog
+
+
+COMANDO EM QUE CRIA UMA MIGRATION E O MODEL AO MESMO TEMPO
+php artisan make:model User --migration
+
+TRABALHANDO COM TESTES EM LARAVEL COM PEST
+Primeiro, remover o phpunit
+composer remove phpunit/phpunit
+
+instalar a dependencia do pest
+composer require pestphp/pest --dev --with-all-dependencies
+
+rodar este comando após instalar
+./vendor/bin/pest --init
+
+
+executando todos os testes
+php artisan test
+
+
+criando um teste (sempre colocar a nomenclatura Test no final)
+php artisan make:test MeuPrimeiroTest
+
+como criar um teste unitário
+php artisan make:test MeuPrimeiroTest --unit
+
+testando apenas os teste unitários
+php artisan test --testsuite=Unit
+
+testando apenas um teste especifico
+php artisan test --testsuite=Unit --filter=NomeDoTest
